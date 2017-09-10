@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.sty.dial.number.MainActivity">
+
+    <TextView
+        android:id="@+id/tv_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="请输入手机号码："
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="30dp"/>
+
+    <EditText
+        android:id="@+id/et_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_hint"
+        android:layout_below="@+id/tv_hint"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:inputType="phone"/>
+
+    <Button
+        android:id="@+id/bt_callphone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/et_number"
+        android:layout_below="@+id/et_number"
+        android:layout_marginTop="42dp"
+        android:text="拨打电话号码"/>
+
+    <Button
+        android:id="@+id/bt_startview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_callphone"
+        android:layout_below="@+id/bt_callphone"
+        android:layout_marginTop="42dp"
+        android:text="打开一个新的View"/>
+
+    <Button
+        android:id="@+id/bt_toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_startview"
+        android:layout_below="@+id/bt_startview"
+        android:layout_marginTop="42dp"
+        android:text="弹出Toast"/>
+
+    <Button
+        android:id="@+id/bt_toast2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/bt_toast"
+        android:layout_below="@+id/bt_toast"
+        android:layout_marginTop="42dp"
+        android:onClick="tellYou"
+        android:text="弹出Toast2"/>
+</RelativeLayout>
