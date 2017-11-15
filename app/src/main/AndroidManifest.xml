@@ -18,6 +18,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- 只要匹配一个完整的intent-filter就可以打开activity -->
+        <activity android:name=".SecondActivity">
+            <intent-filter>
+                <action android:name="com.sty.test.implicit.intent"/>
+                <data android:scheme="sty"/>
+                <data android:mimeType="aa/bb"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.sty.test.implicit.intent"/>
+                <data android:scheme="sty1"/>
+                <data android:mimeType="aa/bb1"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

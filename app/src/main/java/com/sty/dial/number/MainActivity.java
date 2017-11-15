@@ -15,6 +15,7 @@ import android.widget.Toast;
  * 2、新启动一个view
  * 3、Toast
  * 4、Button等View点击事件的四种写法
+ * 5、隐式意图打开activity
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -67,44 +68,53 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * view点击事件的第二种写法
+     * 打开一个网页
      */
     class MyOnclickListener implements View.OnClickListener{
         @Override
         public void onClick(View view) {
-            startNewView();
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse("http://www.baidu.com"));
+            startActivity(intent);
         }
-    }
-
-    private void startNewView(){
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_VIEW);
-        intent.setData(Uri.parse("http://www.baidu.com"));
-        startActivity(intent);
     }
 
     /**
      * view点击事件的第三种写法（推荐）
+     * Toast
      * @param view
      */
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.bt_toast:
-                makeToast();
+                Toast.makeText(this, "Toast按钮被点击了", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
         }
     }
 
-    private void makeToast(){
-        Toast.makeText(this, "Toast按钮被点击了", Toast.LENGTH_SHORT).show();
-    }
-
     /**
      * view点击事件的第四种写法：在布局文件中写onClick属性[public 传参:view]
+     * 隐式意图打开activity
      */
-    public void tellYou(View view){
-        Toast.makeText(this, "点击事件的第四种写法", Toast.LENGTH_SHORT).show();
+    public void startSecondActivityByImplicitIntent(View view){
+        //1.创建意图对象
+        Intent intent = new Intent();
+        //2.设置意图的action(动作)
+        intent.setAction("com.sty.test.implicit.intent");
+        //3.设置一个category
+        intent.addCategory("android.intent.category.DEFAULT");
+//        //3.1设置一个data--->This method automatically clears any type that was previously set
+//        intent.setData(Uri.parse("sty:" + "anyIntOrString"));
+//        //3.2设置数据类型type--->this method automatically clears any data that was previously set
+//        intent.setType("aa/bb");
+
+        //注意：如果type和data同时使用时应使用这个方法
+        intent.setDataAndType(Uri.parse("sty:" + "anyIntOrString"), "aa/bb");
+        //4.开启activity
+        startActivity(intent);
     }
 }
